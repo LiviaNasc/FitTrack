@@ -93,3 +93,21 @@ export const FitnessIcon = styled.div`
   font-size: 40px;
   color: #FF6600;
 `;
+
+export const LinkText = styled.p`
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+  font-size: 14px;
+`;
+
+export const StrongText = styled.span`
+  color: #FF6600;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+  
+  &:hover {
+    color: #E55C00;
+  }
+`;

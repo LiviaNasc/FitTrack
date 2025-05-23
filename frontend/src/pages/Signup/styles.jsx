@@ -150,3 +150,13 @@ export const Select = styled.select`
     color: white;
   }
 `;
+
+export const SuccessMessage = styled.span`
+  color: #4BB543; /* Verde */
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+  background: rgba(75, 181, 67, 0.1);
+  padding: 8px;
+  border-radius: 4px;
+`;
