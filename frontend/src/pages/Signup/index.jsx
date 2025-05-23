@@ -140,11 +140,7 @@ function SignUp() {
 
         <C.Button type="submit">Cadastrar</C.Button>
         
-        <C.LinkText>
-          Já tem uma conta? <C.StrongText onClick={() => navigate('/signin')}>
-            Faça login
-          </C.StrongText>
-        </C.LinkText>
+       
       </C.Form>
     </C.Container>
   );
