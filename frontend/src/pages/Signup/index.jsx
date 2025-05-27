@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as C from './styles';
+import { useAuth } from '../../context/AuthContext';
 
 function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [phone, setPhone] = useState(''); 
+  const [phone, setPhone] = useState('');
   const [userType, setUserType] = useState('aluno');
   const [cref, setCref] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
     if (!user || user.tipo !== 'admin') {
-      navigate('/admin/home'); // Redireciona se não for admin
+      navigate('/admin/home');
     }
-  }, [navigate]);
+  }, [user, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,21 +36,19 @@ function SignUp() {
       return;
     }
 
-    try {
-      const userData = {
-        nome: name,
-        email,
-        senha: password,
-        telefone: phone,
-        tipo: userType,
-        ...(userType === 'instrutor' && { cref }) // Adiciona CREF apenas para instrutores
-      };
+    const userData = {
+      nome: name,
+      email,
+      senha: password,
+      telefone: phone,
+      tipo: userType,
+      ...(userType === 'instrutor' && { cref }),
+    };
 
+    try {
       const response = await fetch('http://localhost:3000/auth/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
       });
 
@@ -60,7 +59,7 @@ function SignUp() {
       }
 
       setSuccess('Usuário cadastrado com sucesso!');
-      setTimeout(() => navigate('/signin'), 2000);
+      setTimeout(() => navigate('/admin/home'), 2000);
 
     } catch (err) {
       console.error('Erro no cadastro:', err);
@@ -72,7 +71,7 @@ function SignUp() {
     <C.Container>
       <C.Form onSubmit={handleSubmit}>
         <C.Title>Cadastro</C.Title>
-        
+
         {error && <C.ErrorMessage>{error}</C.ErrorMessage>}
         {success && <C.SuccessMessage>{success}</C.SuccessMessage>}
 
@@ -133,18 +132,12 @@ function SignUp() {
               placeholder="CREF * (apenas para instrutores)"
               value={cref}
               onChange={(e) => setCref(e.target.value)}
-              required={userType === 'instrutor'}
+              required
             />
           </C.FormGroup>
         )}
 
         <C.Button type="submit">Cadastrar</C.Button>
-        
-        <C.LinkText>
-          Já tem uma conta? <C.StrongText onClick={() => navigate('/signin')}>
-            Faça login
-          </C.StrongText>
-        </C.LinkText>
       </C.Form>
     </C.Container>
   );

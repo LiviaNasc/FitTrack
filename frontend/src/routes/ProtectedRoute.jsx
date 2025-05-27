@@ -1,13 +1,13 @@
 import { Navigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-const ProtectedRoute = ({ children, allowedRoles }) => {
-  const user = JSON.parse(localStorage.getItem('user'));
-  
-  if (!user || !allowedRoles.includes(user.tipo)) {
-    return <Navigate to="/signin" replace />;
-  }
-  
+function ProtectedRoute({ children, allowedRoles }) {
+  const { user } = useAuth();
+
+  if (!user) return <Navigate to="/signin" />;
+  if (!allowedRoles.includes(user.tipo)) return <Navigate to="/signin" />;
+
   return children;
-};
+}
 
 export default ProtectedRoute;

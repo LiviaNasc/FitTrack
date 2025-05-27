@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import * as C from './styles';
 
@@ -8,39 +9,16 @@ function SignIn() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
 
-    if (!email || !password) {
-      setError('Preencha todos os campos');
-      setIsLoading(false);
-      return;
-    }
-
     try {
-      const response = await fetch('http://localhost:3000/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, senha: password }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.erro || 'Erro ao fazer login');
-      }
-
-      // Armazena os dados do usuário
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.usuario));
-
-      // Redireciona para a home correta baseada no tipo de usuário
-      switch(data.usuario.tipo) {
+      const user = await login(email, password);
+      switch(user.tipo) {
         case 'admin':
           navigate('/admin/home');
           break;
@@ -51,11 +29,9 @@ function SignIn() {
           navigate('/aluno/home');
           break;
         default:
-          navigate('/'); // Redireciona para home geral se tipo desconhecido
+          navigate('/');
       }
-
     } catch (err) {
-      console.error('Erro no login:', err);
       setError(err.message || 'Erro ao fazer login');
     } finally {
       setIsLoading(false);

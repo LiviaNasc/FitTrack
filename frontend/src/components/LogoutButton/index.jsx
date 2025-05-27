@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import * as C from './styles';
 
 const LogoutButton = () => {
   const navigate = useNavigate();
+  const { logout } = useAuth(); 
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    
+    logout(); 
     navigate('/signin');
   };
 
