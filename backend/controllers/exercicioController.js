@@ -7,7 +7,7 @@ function criar(req, res) {
   }
 
   try {
-    const exercicio = exercicioModel.criarExercicio(nome, descricao);
+    const exercicio = exercicioModel.cadastrarExercicio(nome, descricao);
     res.status(201).json(exercicio);
   } catch (err) {
     console.error(err);
