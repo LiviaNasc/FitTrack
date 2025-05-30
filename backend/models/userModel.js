@@ -1,23 +1,59 @@
+const e = require('express');
 const db = require('../db/db');
 
-function criarUsuario(nome, email, senha, telefone, tipo) {
-  const stmt = db.prepare('INSERT INTO usuarios (nome, email, senha, telefone, tipo) VALUES (?, ?, ?, ?, ?)');
-  const result = stmt.run(nome, email, senha, telefone, tipo);
-  return { id: result.lastInsertRowid, nome, email, telefone, tipo };
+function buscarTodosUsuarios() {
+    const stmt = db.prepare('SELECT * FROM usuarios');
+    return stmt.all();
 }
 
-function criarInstrutor(cref, usuarioId) {
-  const stmt = db.prepare('INSERT INTO instrutores (cref, usuario_id) VALUES (?, ?)');
-  stmt.run(cref, usuarioId);
+function buscarUsuarioPorId(id) {
+    const stmt = db.prepare('SELECT * FROM usuarios WHERE id = ?');
+    return stmt.get(id);
 }
 
-function buscarPorEmail(email) {
-  const stmt = db.prepare('SELECT * FROM usuarios WHERE email = ?');
-  return stmt.get(email);
+function buscarUsuarioPorEmail(email) {
+    const stmt = db.prepare('SELECT * FROM usuarios WHERE email = ?');
+    return stmt.get(email);
 }
 
-module.exports = {
-  criarUsuario,
-  criarInstrutor,
-  buscarPorEmail
+function atualizarUsuario(id, dados) {
+  const campos = [];
+  const valores = [];
+
+  if (dados.nome) {
+    campos.push('nome = ?');
+    valores.push(dados.nome);
+  }
+
+  if (dados.email) {
+    campos.push('email = ?');
+    valores.push(dados.email);
+  }
+
+  if (dados.telefone) {
+    campos.push('telefone = ?');
+    valores.push(dados.telefone);
+  }
+
+  if (campos.length === 0) {
+    throw new Error('Nenhum campo fornecido para atualização');
+  }
+
+  const query = `UPDATE usuarios SET ${campos.join(', ')} WHERE id = ?`;
+  valores.push(id);
+
+  db.prepare(query).run(...valores);
+}
+
+function deletarUsuario(id) {
+    const stmt = db.prepare('DELETE FROM usuarios WHERE id = ?');
+    stmt.run(id);
+}
+
+exports = {
+    buscarTodosUsuarios,
+    buscarUsuarioPorId,
+    buscarUsuarioPorEmail,
+    atualizarUsuario,
+    deletarUsuario
 };

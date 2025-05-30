@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const userModel = require('../models/userModel');
+const authModel = require('../models/authModel');
 require('dotenv').config();
 
 async function registrar(req, res) {
@@ -17,10 +17,10 @@ async function registrar(req, res) {
     const senhaCriptografada = await bcrypt.hash(senha, 10);
   
     try {
-      const usuario = userModel.criarUsuario(nome, email, senhaCriptografada, telefone, tipo);
+      const usuario = authModel.criarUsuario(nome, email, senhaCriptografada, telefone, tipo);
   
       if (tipo === 'instrutor') {
-        userModel.criarInstrutor(cref, usuario.id);
+        authModel.criarInstrutor(cref, usuario.id);
       }
   
       res.status(201).json({ mensagem: 'Usuário criado com sucesso', usuario });
@@ -32,7 +32,7 @@ async function registrar(req, res) {
 
 async function login(req, res) {
   const { email, senha } = req.body;
-  const usuario = userModel.buscarPorEmail(email);
+  const usuario = authModel.buscarPorEmail(email);
 
   if (!usuario) return res.status(401).json({ erro: 'Email ou senha inválidos' });
 
@@ -45,6 +45,8 @@ async function login(req, res) {
 
   res.json({ mensagem: 'Login bem-sucedido', token, usuario: { id: usuario.id, nome: usuario.nome, tipo: usuario.tipo } });
 }
+
+
 
 module.exports = {
   registrar,
