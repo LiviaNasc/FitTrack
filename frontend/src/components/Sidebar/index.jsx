@@ -13,7 +13,7 @@ const Sidebar = ({ userType }) => {
 
   const instrutorItems = [
     { label: 'Cadastrar Treino', path: '/instrutor/home' },
-    { label: 'Acompanhar Alunos', path: '/instrutor/alunos' }
+    { label: 'Acompanhar Alunos', path: '/instrutor/acompanhar' }
   ];
 
   const items = userType === 'aluno' ? alunoItems : instrutorItems;
