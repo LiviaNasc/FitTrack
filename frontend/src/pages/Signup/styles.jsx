@@ -25,14 +25,22 @@ export const Form = styled.form`
   border-top: 5px solid #FF6600;
 `;
 
-export const Title = styled.h2`
-  color: #FF6600; /* Laranja vibrante */
-  text-align: center;
+export const HeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center; 
   margin-bottom: 25px;
+  position: relative;
+`;
+
+export const Title = styled.h2`
+  color: #FF6600;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin: 0;
 `;
+
 
 export const Input = styled.input`
   width: 100%;
@@ -159,4 +167,20 @@ export const SuccessMessage = styled.span`
   background: rgba(75, 181, 67, 0.1);
   padding: 8px;
   border-radius: 4px;
+`;
+
+
+
+export const BackArrow = styled.span`
+  font-size: 24px;
+  cursor: pointer;
+  color: #FF6600;
+  transition: color 0.3s, transform 0.2s;
+  position: absolute;
+  left: 0;
+
+  &:hover {
+    color: #E55C00;
+    transform: translateX(-3px);
+  }
 `;

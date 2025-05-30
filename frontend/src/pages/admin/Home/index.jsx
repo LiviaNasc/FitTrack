@@ -1,13 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as C from './styles';
-import LogoutButton from '../../../components/LogoutButton';
-
+import Layout from '../../../components/Layout';
 
 function AdminHome() {
   const navigate = useNavigate();
 
   return (
+  <Layout userType={"admin"}>
     <C.HomeContainer>
       <C.Header>
         <h1>Painel Administrativo</h1>
@@ -18,8 +18,8 @@ function AdminHome() {
           Cadastrar Usuário
         </C.AdminButton>
       </section>
-      <LogoutButton />
     </C.HomeContainer>
+    </Layout>
   );
 }
 

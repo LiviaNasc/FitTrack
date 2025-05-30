@@ -16,7 +16,20 @@ const Sidebar = ({ userType }) => {
     { label: 'Cadastrar Exercício', path: '/instrutor/cadastrarExercicio' }
   ];
 
-  const items = userType === 'aluno' ? alunoItems : instrutorItems;
+    const adminItems = [
+    { label: 'Gerir Alunos', path: '/admin/home' },
+    { label: 'Gerir Instrutores', path: '/admin/home' },
+    { label: 'Visualizar Relatórios', path: '/admin/home' }
+  ];
+
+  let items = [];
+  if (userType === 'aluno') {
+    items = alunoItems;
+  } else if (userType === 'instrutor') {
+    items = instrutorItems;
+  } else if (userType === 'admin') {
+    items = adminItems;
+  }
 
   return (
     <C.SidebarContainer>

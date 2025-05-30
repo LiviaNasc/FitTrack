@@ -95,8 +95,11 @@ function SignUp() {
   return (
     <C.Container>
       <C.Form onSubmit={handleSubmit}>
-        <C.Title>Cadastro</C.Title>
-
+          <C.HeaderWrapper>
+            <C.BackArrow onClick={() => navigate('/admin/home')}>&larr;</C.BackArrow>
+            <C.Title>Cadastro</C.Title>
+          </C.HeaderWrapper>
+          
         {error && <C.ErrorMessage>{error}</C.ErrorMessage>}
         {success && <C.SuccessMessage>{success}</C.SuccessMessage>}
 
@@ -165,9 +168,7 @@ function SignUp() {
         <C.Button type="submit" disabled={isLoading}>
           {isLoading ? 'Cadastrando...' : 'Cadastrar'}
         </C.Button>
-        <C.Button onClick={() => navigate('/admin/home')} type="button">
-          Voltar
-        </C.Button>
+       
       </C.Form>
     </C.Container>
   );
