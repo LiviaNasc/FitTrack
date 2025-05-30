@@ -3,8 +3,7 @@ import styled from 'styled-components';
 export const HomeContainer = styled.div`
   padding: 2rem;
   max-width: 1200px;
-  margin-left: 250px; 
-  margin-top: 60px; 
+  margin: 0 auto;
 `;
 
 export const PageHeader = styled.header`

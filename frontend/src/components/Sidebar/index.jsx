@@ -6,9 +6,9 @@ const Sidebar = ({ userType }) => {
   const navigate = useNavigate();
 
   const alunoItems = [
-    { label: 'Visualizar Treinos', path: '/aluno/home' },
-    { label: 'Registrar Progresso', path: '/aluno/progresso' },
-    { label: 'Monitorar Medidas', path: '/aluno/medidas' }
+    { label: 'Visualizar Treinos', path: '/aluno/treinos' },
+    { label: 'Registrar Progresso', path: '/aluno/home' },
+    { label: 'Monitorar Medidas', path: '/aluno/home' }
   ];
 
   const instrutorItems = [

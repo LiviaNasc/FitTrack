@@ -8,6 +8,7 @@ import InstrutorHome from '../pages/instrutor/Home';
 import ProtectedRoute from './ProtectedRoute';
 import InstrutorCadastrarTreino from '../pages/instrutor/CadastrarTreino';
 import InstrutorCadastrarExercicio from '../pages/instrutor/CadastrarExercicio';
+import AlunoTreinos from '../pages/aluno/Treinos';
 
 export default function RoutesApp() {
   return (
@@ -51,6 +52,13 @@ export default function RoutesApp() {
             <AlunoHome />
           </ProtectedRoute>
         } />
+
+        <Route path="/aluno/treinos" element={
+          <ProtectedRoute allowedRoles={['aluno']}>
+            <AlunoTreinos />
+          </ProtectedRoute>
+        } />
+
 
         <Route path="*" element={<Navigate to="/signin" />} />
       </Routes>
