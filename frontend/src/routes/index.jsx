@@ -6,6 +6,8 @@ import AdminHome from '../pages/admin/Home';
 import AlunoHome from '../pages/aluno/Home';
 import InstrutorHome from '../pages/instrutor/Home';
 import ProtectedRoute from './ProtectedRoute';
+import InstrutorCadastrarTreino from '../pages/instrutor/CadastrarTreino';
+import InstrutorCadastrarExercicio from '../pages/instrutor/CadastrarExercicio';
 
 export default function RoutesApp() {
   return (
@@ -29,6 +31,18 @@ export default function RoutesApp() {
         <Route path="/instrutor/home" element={
           <ProtectedRoute allowedRoles={['instrutor']}>
             <InstrutorHome />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/instrutor/cadastrarTreino" element={
+          <ProtectedRoute allowedRoles={['instrutor']}>
+            <InstrutorCadastrarTreino />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/instrutor/cadastrarExercicio" element={
+          <ProtectedRoute allowedRoles={['instrutor']}>
+            <InstrutorCadastrarExercicio />
           </ProtectedRoute>
         } />
         
