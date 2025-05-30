@@ -6,9 +6,13 @@ require('dotenv').config();
 app.use(cors());
 
 const authRoutes = require('./routes/authRoutes');
+const treinoRoutes = require('./routes/treinoRoutes');
+const exercicioRoutes = require('./routes/exercicioRoutes');
 
 app.use(express.json());
 app.use('/auth', authRoutes);
+app.use('/treino', treinoRoutes);
+app.use('/exercicios', exercicioRoutes);
 
 const PORT = 3000;
 app.listen(PORT, () => {

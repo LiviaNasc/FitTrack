@@ -24,4 +24,57 @@ db.prepare(`
     )
   `).run();
 
+// Tabelas de exercícios disponíveis
+db.prepare(`
+  CREATE TABLE IF NOT EXISTS exercicios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL,
+    descricao TEXT
+  )
+`).run();
+
+// Tabela de treinos criados
+db.prepare(`
+  CREATE TABLE IF NOT EXISTS treinos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    aluno_id INTEGER NOT NULL,
+    instrutor_id INTEGER NOT NULL,
+    data TEXT NOT NULL,
+    observacao TEXT,
+    FOREIGN KEY (aluno_id) REFERENCES usuarios(id),
+    FOREIGN KEY (instrutor_id) REFERENCES usuarios(id)
+  )
+`).run();
+
+// Exercícios que fazem parte do treino
+db.prepare(`
+  CREATE TABLE IF NOT EXISTS treino_exercicios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    treino_id INTEGER NOT NULL,
+    exercicio_id INTEGER NOT NULL,
+    series INTEGER,
+    repeticoes INTEGER,
+    carga TEXT,
+    concluido BOOLEAN DEFAULT 0,
+    comentario TEXT,
+    FOREIGN KEY (treino_id) REFERENCES treinos(id),
+    FOREIGN KEY (exercicio_id) REFERENCES exercicios(id)
+  )
+`).run();
+
+// Tabela de logs de treino
+db.prepare(`
+  CREATE TABLE IF NOT EXISTS logs_treino (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    treino_exercicio_id INTEGER NOT NULL,
+    data TEXT NOT NULL,
+    repeticoes INTEGER,
+    carga TEXT,
+    FOREIGN KEY (treino_exercicio_id) REFERENCES treino_exercicios(id)
+  )
+`).run();
+
+
+
+
 module.exports = db;
