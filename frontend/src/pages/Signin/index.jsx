@@ -16,6 +16,7 @@ function SignIn() {
     setError('');
     setIsLoading(true);
 
+    
     try {
       const user = await login(email, password);
       switch(user.tipo) {

@@ -12,10 +12,12 @@ function SignUp() {
   const [cref, setCref] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { user } = useAuth();
 
   useEffect(() => {
+    console.log('User no SignUp:', user);
     if (!user || user.tipo !== 'admin') {
       navigate('/admin/home');
     }
@@ -25,14 +27,25 @@ function SignUp() {
     e.preventDefault();
     setError('');
     setSuccess('');
+    setIsLoading(true);
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setError('Autenticação necessária. Redirecionando...');
+      setTimeout(() => navigate('/signin'), 2000);
+      setIsLoading(false);
+      return;
+    }
 
     if (!name || !email || !password) {
       setError('Preencha todos os campos obrigatórios');
+      setIsLoading(false);
       return;
     }
 
     if (userType === 'instrutor' && !cref) {
       setError('CREF é obrigatório para instrutores');
+      setIsLoading(false);
       return;
     }
 
@@ -48,7 +61,10 @@ function SignUp() {
     try {
       const response = await fetch('http://localhost:3000/auth/register', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json', 
+          'Authorization': `Bearer ${token}` 
+        },
         body: JSON.stringify(userData),
       });
 
@@ -63,7 +79,16 @@ function SignUp() {
 
     } catch (err) {
       console.error('Erro no cadastro:', err);
-      setError(err.message || 'Erro ao cadastrar usuário');
+      if (err.message.includes('Token')) {
+        setError('Sessão expirada. Por favor, faça login novamente.');
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setTimeout(() => navigate('/signin'), 2000);
+      } else {
+        setError(err.message || 'Erro ao cadastrar usuário');
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -137,7 +162,12 @@ function SignUp() {
           </C.FormGroup>
         )}
 
-        <C.Button type="submit">Cadastrar</C.Button>
+        <C.Button type="submit" disabled={isLoading}>
+          {isLoading ? 'Cadastrando...' : 'Cadastrar'}
+        </C.Button>
+        <C.Button onClick={() => navigate('/admin/home')} type="button">
+          Voltar
+        </C.Button>
       </C.Form>
     </C.Container>
   );

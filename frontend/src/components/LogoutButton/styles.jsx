@@ -1,19 +1,16 @@
 import styled from 'styled-components';
 
 export const LogoutButtonStyled = styled.button`
-  position: absolute;
-  top: 30px;
-  right: 100px;
-  padding: 8px 16px;
-  background-color: #ff3333;
+  background-color: #ff6600;
   color: white;
+  padding: 12px 20px; 
+  font-size: 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  width: 100%; 
 
   &:hover {
-    background-color: #cc0000;
+    background-color: #e65c00;
   }
 `;

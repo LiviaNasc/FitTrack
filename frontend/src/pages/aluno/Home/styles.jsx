@@ -3,10 +3,11 @@ import styled from 'styled-components';
 export const HomeContainer = styled.div`
   padding: 2rem;
   max-width: 1200px;
-  margin: 0 auto;
+  margin-left: 250px; 
+  margin-top: 60px; 
 `;
 
-export const Header = styled.header`
+export const PageHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,4 +20,3 @@ export const Header = styled.header`
     font-size: 2rem;
   }
 `;
-

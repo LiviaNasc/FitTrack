@@ -1,11 +1,10 @@
-import React from 'react';
 import * as C from './styles';
-import LogoutButton from '../../../components/LogoutButton';
+import Layout from '../../../components/Layout';
 
 function InstrutorHome() {
   return (
+  <Layout userType={"instrutor"}>
     <C.HomeContainer>
-    <LogoutButton/>
       <C.Header>
         <h1>Painel do Instrutor</h1>
       </C.Header>
@@ -13,6 +12,7 @@ function InstrutorHome() {
         <p>Bem-vindo ao seu painel de instrutor</p>
       </section>
     </C.HomeContainer>
+    </Layout>
   );
 }
 
