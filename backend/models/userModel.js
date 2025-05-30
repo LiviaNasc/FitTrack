@@ -50,7 +50,7 @@ function deletarUsuario(id) {
     stmt.run(id);
 }
 
-exports = {
+module.exports = {
     buscarTodosUsuarios,
     buscarUsuarioPorId,
     buscarUsuarioPorEmail,

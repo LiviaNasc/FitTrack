@@ -1,8 +1,8 @@
-const userModel = require('../models/userModel');
+const userModel = require('../models/userModel.js');
 
 async function buscarTodosUsuarios(req, res) {
     try {
-        const users = await userModel.getAllUsers();
+        const users = await userModel.buscarTodosUsuarios();
         res.status(200).json(users);
     } catch (error) {
         console.error(error);
@@ -13,7 +13,7 @@ async function buscarTodosUsuarios(req, res) {
 async function buscarUsuarioPorId(req, res) {
     const { id } = req.params;
     try {
-        const user = await userModel.getUserById(id);
+        const user = await userModel.buscarUsuarioPorId(id);
         if (!user) {
             return res.status(404).json({ error: 'Usuário não encontrado' });
         }

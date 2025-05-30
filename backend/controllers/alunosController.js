@@ -1,4 +1,4 @@
-const alunosModel = require('../models/alunosModel');
+const alunosModel = require('../models/alunosModel.js');
 
 async function buscarTodosAlunos(req, res) {
     try {

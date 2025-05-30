@@ -1,4 +1,4 @@
-const instrutorModel = require('../models/instrutorModel');
+const instrutorModel = require('../models/instrutorModel.js');
 
 async function buscarTodosInstrutores(req, res) {
     try {

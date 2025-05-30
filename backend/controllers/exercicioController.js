@@ -1,4 +1,4 @@
-const exercicioModel = require('../models/exercicioModel');
+const exercicioModel = require('../models/exercicioModel.js');
 
 function criar(req, res) {
   const { nome, descricao } = req.body;

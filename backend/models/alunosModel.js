@@ -1,22 +1,22 @@
 const db = require('../db/db');
 
 function buscarTodosAlunos() {
-    const stmt = db.prepare('SELECT * FROM alunos');
+    const stmt = db.prepare("SELECT * FROM usuarios WHERE tipo = 'aluno'");
     return stmt.all();
 }
 
 function buscarAlunoPorId(id) {
-    const stmt = db.prepare('SELECT * FROM alunos WHERE usuario_id = ?');
+    const stmt = db.prepare("SELECT * FROM usuarios WHERE id = ? AND tipo = 'aluno'");
     return stmt.get(id);
 }
 
 function buscarAlunoPorCpf(cpf) {
-    const stmt = db.prepare('SELECT * FROM alunos WHERE cpf = ?');
+    const stmt = db.prepare("SELECT * FROM usuarios WHERE cpf = ? AND tipo = 'aluno'");
     return stmt.get(cpf);
 }
 
 function deletarAluno(id) {
-    const stmt = db.prepare('DELETE FROM alunos WHERE usuario_id = ?');
+    const stmt = db.prepare("DELETE FROM usuarios WHERE id = ? AND tipo = 'aluno'");
     stmt.run(id);
 }
 
@@ -48,13 +48,13 @@ function atualizarAluno(id, dados) {
         throw new Error('Nenhum campo fornecido para atualização');
     }
 
-    const query = `UPDATE alunos SET ${campos.join(', ')} WHERE usuario_id = ?`;
+    const query = `UPDATE usuarios SET ${campos.join(', ')} WHERE id = ? AND tipo = 'aluno'`;
     valores.push(id);
 
     db.prepare(query).run(...valores);
 }
 
-exports = {
+module.exports = {
     buscarTodosAlunos,
     buscarAlunoPorId,
     buscarAlunoPorCpf,
