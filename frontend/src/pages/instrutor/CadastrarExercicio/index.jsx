@@ -50,6 +50,7 @@ function InstrutorCadastrarExercicio() {
         <h1>Cadastrar Exercício</h1>
       </C.Header>
       <C.Form onSubmit={handleSubmit}>
+        <C.Label>Nome</C.Label>
         <C.FormGroup>
           <C.Input 
             type="text" 

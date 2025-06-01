@@ -38,13 +38,10 @@ function InstrutorCadastrarTreino() {
       }
     };
 
-    // Carrega lista de alunos
     fetchData('http://localhost:3000/alunos/listarAlunos', setAlunos);
     
-    // Carrega lista de exercícios
     fetchData('http://localhost:3000/exercicios/listarExercicios', setExercicios);
-    
-    // Adicionando array de dependências vazio para executar apenas uma vez
+
   }, []);
 
   const handleAddExercicio = () => {
@@ -83,7 +80,7 @@ function InstrutorCadastrarTreino() {
 
     const treinoData = {
       aluno_id: parseInt(selectedAluno),
-      instrutor_id: 1, // Você pode obter isso do contexto de autenticação
+      instrutor_id: 1, 
       data: data,
       observacao: observacao,
       exercicios: exerciciosSelecionados.map(ex => ({
@@ -124,6 +121,8 @@ function InstrutorCadastrarTreino() {
   return (
     <Layout userType={"instrutor"}>
       <C.HomeContainer>
+
+      
         <C.Header>
           <h1>Cadastrar Treino</h1>
         </C.Header>
@@ -237,7 +236,7 @@ function InstrutorCadastrarTreino() {
 
           <C.Button type="submit">Cadastrar Treino</C.Button>
         </C.Form>
-      </C.HomeContainer>
+        </C.HomeContainer>
     </Layout>
   );
 }
