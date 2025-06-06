@@ -139,8 +139,8 @@ export const ExercicioItem = styled.li`
   border-radius: 6px;
   padding: 1.2rem;
   margin-bottom: 1rem;
-  border-left: 3px solid #FF6600;
-  transition: transform 0.3s;
+  border-left: 3px solid ${props => props.concluido ? '#4CAF50' : '#FF6600'};
+  transition: all 0.3s;
 
   &:hover {
     transform: translateX(5px);
@@ -254,5 +254,127 @@ export const NoTreinos = styled.div`
     font-size: 2rem;
     display: block;
     margin-bottom: 1rem;
+  }
+`;
+
+export const ExercicioHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const ExercicioConcluidoBadge = styled.span`
+  background: #4CAF50;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+`;
+
+export const ProgressoSection = styled.div`
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed #444;
+`;
+
+export const ProgressoGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const ProgressoGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+`;
+
+export const ProgressoLabel = styled.label`
+  font-size: 0.85rem;
+  color: #aaa;
+`;
+
+export const ProgressoSelect = styled.select`
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background: #333;
+  color: #fff;
+  width: 100%;
+`;
+
+export const ProgressoInput = styled.input`
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background: #333;
+  color: #fff;
+  width: 100%;
+`;
+
+export const ProgressoTextarea = styled.textarea`
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #444;
+  background: #333;
+  color: #fff;
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+`;
+
+export const ProgressoActions = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
+
+export const ProgressoCheckbox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  input {
+    accent-color: #FF6600;
+  }
+
+  label {
+    font-size: 0.9rem;
+    color: #aaa;
+    cursor: pointer;
+  }
+`;
+
+export const ProgressoButton = styled.button`
+  background: #FF6600;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+
+  &:hover {
+    background: #E55C00;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
   }
 `;

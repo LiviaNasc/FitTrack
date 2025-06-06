@@ -1,6 +1,5 @@
 const API_URL = "http://localhost:3000";
 
-// fazer requisições autenticadas
 const apiRequest = async (endpoint, method = 'GET', body = null) => {
   const token = localStorage.getItem('token');
   const headers = {
@@ -42,6 +41,8 @@ export const treinoService = {
     apiRequest(`/treino/${treinoId}/observacao`, 'POST', { observacao }),
   marcarComoConcluido: (treinoId) => 
     apiRequest(`/treino/${treinoId}/concluir`, 'PATCH'),
+  registrarProgressoExercicio: (exercicioId, dados) =>
+    apiRequest(`/treino/treino-exercicio/${exercicioId}`, 'PUT', dados),
 };
 
 // exercícios
