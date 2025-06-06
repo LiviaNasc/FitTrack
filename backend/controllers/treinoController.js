@@ -97,11 +97,22 @@ function atualizarTreinoExercicio(req, res) {
     }
 }
 
+function estatisticasAdesao(req, res) {
+    try {
+        const stats = treinoModel.estatisticasAdesao();
+        res.json(stats);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ erro: 'Erro ao buscar estatísticas de adesão' });
+    }
+}
+
 module.exports = {
     cadastrarTreino,
     visualizarTreinos,
     editarTreino,
     listarTreinos,
     excluirTreino,
-    atualizarTreinoExercicio
+    atualizarTreinoExercicio,
+    estatisticasAdesao
 };

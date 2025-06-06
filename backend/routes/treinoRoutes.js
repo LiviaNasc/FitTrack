@@ -9,6 +9,7 @@ router.put('/editarTreino/:treinoId', autenticar, treinoController.editarTreino)
 router.delete('/excluirTreino/:treinoId', autenticar, treinoController.excluirTreino);
 router.get('/listarTreinos', autenticar, treinoController.listarTreinos);
 router.put('/treino-exercicio/:id', autenticar, treinoController.atualizarTreinoExercicio);
+router.get('/estatisticasAdesao', autenticar, treinoController.estatisticasAdesao);
 
 module.exports = router;
 

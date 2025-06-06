@@ -107,6 +107,56 @@ function atualizarTreinoExercicio(id, dados) {
     db.prepare(query).run(...valores);
 }
 
+function estatisticasAdesao() {
+    const totalExercicios = db.prepare('SELECT COUNT(*) as total FROM treino_exercicios').get().total;
+
+    const concluidos = db.prepare('SELECT COUNT(*) as total FROM treino_exercicios WHERE concluido = 1').get().total;
+
+    const percentualConclusao = totalExercicios > 0 ? (concluidos / totalExercicios) * 100 : 0;
+
+    const medias = db.prepare(`
+        SELECT 
+            AVG(series_realizadas - series) as media_dif_series,
+            AVG(repeticoes_realizadas - repeticoes) as media_dif_repeticoes
+        FROM treino_exercicios
+        WHERE series_realizadas IS NOT NULL AND repeticoes_realizadas IS NOT NULL
+    `).get();
+
+
+    const mediaDifCarga = db.prepare(`
+        SELECT AVG(CAST(carga_realizada AS FLOAT) - CAST(carga AS FLOAT)) as media_dif_carga
+        FROM treino_exercicios
+        WHERE 
+            carga_realizada IS NOT NULL AND 
+            carga IS NOT NULL AND 
+            typeof(carga_realizada) = 'text' AND 
+            typeof(carga) = 'text' AND
+            CAST(carga_realizada AS FLOAT) > 0 AND
+            CAST(carga AS FLOAT) > 0
+    `).get().media_dif_carga;
+
+    const topAlunos = db.prepare(`
+        SELECT te.treino_id, t.aluno_id, u.nome, COUNT(*) as concluidos
+        FROM treino_exercicios te
+        JOIN treinos t ON te.treino_id = t.id
+        JOIN usuarios u ON t.aluno_id = u.id
+        WHERE te.concluido = 1
+        GROUP BY t.aluno_id
+        ORDER BY concluidos DESC
+        LIMIT 3
+    `).all();
+
+    return {
+        totalExercicios,
+        concluidos,
+        percentualConclusao,
+        mediaDifSeries: medias.media_dif_series,
+        mediaDifRepeticoes: medias.media_dif_repeticoes,
+        mediaDifCarga,
+        topAlunos
+    };
+}
+
 module.exports = {
     criarTreino,
     adicionarExercicioAoTreino,
@@ -114,5 +164,6 @@ module.exports = {
     editarTreino,
     excluirTreino,
     listarTreinos,
-    atualizarTreinoExercicio
+    atualizarTreinoExercicio,
+    estatisticasAdesao
 };
