@@ -10,8 +10,8 @@ const Sidebar = ({ userType }) => {
   ];
 
   const instrutorItems = [
-    { label: 'Cadastrar Treino', path: '/instrutor/cadastrarTreino' },
-    { label: 'Cadastrar Exercício', path: '/instrutor/cadastrarExercicio' }
+    { label: 'Treinos', path: '/instrutor/cadastrarTreino' },
+    { label: 'Exercícios', path: '/instrutor/cadastrarExercicio' }
   ];
 
     const adminItems = [

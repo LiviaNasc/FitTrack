@@ -39,8 +39,80 @@ function buscarTreinosPorAluno(aluno_id){
     return treinoDetalhado;
 }
 
+function excluirTreino(treinoId) {
+    db.prepare('DELETE FROM treino_exercicios WHERE treino_id = ?').run(treinoId);
+    const stmt = db.prepare('DELETE FROM treinos WHERE id = ?');
+    return stmt.run(treinoId);
+}
+
+function editarTreino(treinoId, dados) {
+    const campos = [];
+    const valores = [];
+
+    if (dados.data) {
+        campos.push('data = ?');
+        valores.push(dados.data);
+    }
+    
+    if (dados.observacao) {
+        campos.push('observacao = ?');
+        valores.push(dados.observacao);
+    }
+
+    if (campos.length === 0) {
+        throw new Error('Nenhum campo fornecido para atualização');
+    }
+
+    const query = `UPDATE treinos SET ${campos.join(', ')} WHERE id = ?`;
+    valores.push(treinoId);
+}
+
+function listarTreinos() {
+    const stmt = db.prepare('SELECT * FROM treinos');
+    return stmt.all();
+}
+
+function atualizarTreinoExercicio(id, dados) {
+    const campos = [];
+    const valores = [];
+
+    if (dados.series_realizadas !== undefined) {
+        campos.push('series_realizadas = ?');
+        valores.push(dados.series_realizadas);
+    }
+    if (dados.repeticoes_realizadas !== undefined) {
+        campos.push('repeticoes_realizadas = ?');
+        valores.push(dados.repeticoes_realizadas);
+    }
+    if (dados.carga_realizada !== undefined) {
+        campos.push('carga_realizada = ?');
+        valores.push(dados.carga_realizada);
+    }
+    if (dados.concluido !== undefined) {
+        campos.push('concluido = ?');
+        valores.push(dados.concluido);
+    }
+    if (dados.comentario !== undefined) {
+        campos.push('comentario = ?');
+        valores.push(dados.comentario);
+    }
+
+    if (campos.length === 0) {
+        throw new Error('Nenhum campo fornecido para atualização');
+    }
+
+    const query = `UPDATE treino_exercicios SET ${campos.join(', ')} WHERE id = ?`;
+    valores.push(id);
+
+    db.prepare(query).run(...valores);
+}
+
 module.exports = {
     criarTreino,
     adicionarExercicioAoTreino,
-    buscarTreinosPorAluno
+    buscarTreinosPorAluno,
+    editarTreino,
+    excluirTreino,
+    listarTreinos,
+    atualizarTreinoExercicio
 };
