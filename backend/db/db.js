@@ -29,7 +29,11 @@ db.prepare(`
   CREATE TABLE IF NOT EXISTS exercicios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
-    descricao TEXT
+    descricao TEXT,
+    tipo TEXT,
+    musculo TEXT,
+    equipamento TEXT,
+    dificuldade TEXT
   )
 `).run();
 
@@ -46,7 +50,6 @@ db.prepare(`
   )
 `).run();
 
-// Exercícios que fazem parte do treino
 db.prepare(`
   CREATE TABLE IF NOT EXISTS treino_exercicios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -55,26 +58,13 @@ db.prepare(`
     series INTEGER,
     repeticoes INTEGER,
     carga TEXT,
+    series_realizadas INTEGER,
+    repeticoes_realizadas INTEGER,
+    carga_realizada TEXT,
     concluido BOOLEAN DEFAULT 0,
     comentario TEXT,
     FOREIGN KEY (treino_id) REFERENCES treinos(id),
     FOREIGN KEY (exercicio_id) REFERENCES exercicios(id)
   )
 `).run();
-
-// Tabela de logs de treino
-db.prepare(`
-  CREATE TABLE IF NOT EXISTS logs_treino (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    treino_exercicio_id INTEGER NOT NULL,
-    data TEXT NOT NULL,
-    repeticoes INTEGER,
-    carga TEXT,
-    FOREIGN KEY (treino_exercicio_id) REFERENCES treino_exercicios(id)
-  )
-`).run();
-
-
-
-
 module.exports = db;
