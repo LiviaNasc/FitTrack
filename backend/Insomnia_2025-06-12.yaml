@@ -1,0 +1,995 @@
+type: collection.insomnia.rest/5.0
+name: FitTrackTeste
+meta:
+  id: wrk_613475d73ad844bfad470603761cfc01
+  created: 1748574267664
+  modified: 1748574267664
+  description: ""
+collection:
+  - name: Exercicios
+    meta:
+      id: fld_3df906ef432a4762a4c6db1ea65d655d
+      created: 0
+      modified: 0
+      sortKey: -1.5260076222731734e+38
+      description: ""
+    children:
+      - url: http://localhost:3000/exercicios/listarExercicios
+        name: Listar exercícios
+        meta:
+          id: req_36a030dfef824269a3cebaf4070e3f8a
+          created: 0
+          modified: 1748575116655
+          isPrivate: false
+          description: ""
+          sortKey: -1.3512281871921599e+37
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_7ba8fd449a524965b046383245a0060f
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/exercicios/criarExercicio
+        name: Criar exercício
+        meta:
+          id: req_97418eb484334d0588a0d13cbdde8918
+          created: 0
+          modified: 1748575110658
+          isPrivate: false
+          description: ""
+          sortKey: -7.685078937021757e+37
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Agachamento", 
+            	"descricao": "Exerc\u00edcio para pernas"
+            }
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_e31374d677654c02b876fd1b68d2837d
+          - name: Content-Type
+            value: application/json
+            id: pair_d7cc4c2f718c4e10bc5ebd0290f4ee24
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/exercicios/buscar?nome=Incline Hammer Curls
+        name: Buscar Exercício
+        meta:
+          id: req_859af66621c44bceac320bbbccb73945
+          created: 1748795880593
+          modified: 1749167468728
+          isPrivate: false
+          description: ""
+          sortKey: -1.1641198154737928e+37
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_7ba8fd449a524965b046383245a0060f
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/exercicios/excluirExercicio/13
+        name: Deletar Exercício
+        meta:
+          id: req_b1654109d11444a98375a57aa013ef5c
+          created: 1748799683779
+          modified: 1748804891735
+          isPrivate: false
+          description: ""
+          sortKey: -1.0705656296146093e+37
+        method: DELETE
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_7ba8fd449a524965b046383245a0060f
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/exercicios/atualizarExercicio/5
+        name: Atualizar Exercício
+        meta:
+          id: req_170c8bcfd16648ab802c4401e0112cc8
+          created: 1748799696605
+          modified: 1748799796857
+          isPrivate: false
+          description: ""
+          sortKey: -1.0237885366850176e+37
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Teste"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_7ba8fd449a524965b046383245a0060f
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/exercicios/buscarExercicioPorId/9
+        name: Buscar Exercício por ID
+        meta:
+          id: req_7f8bd3a6a47b4fb1849abe395ff71730
+          created: 1748799713516
+          modified: 1748799864131
+          isPrivate: false
+          description: ""
+          sortKey: -1.117342722544201e+37
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_7ba8fd449a524965b046383245a0060f
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Usuários
+    meta:
+      id: fld_56549bf6b03843e6af98f3850b74e664
+      created: 0
+      modified: 0
+      sortKey: -1.096780134643271e+38
+      description: ""
+    children:
+      - url: http://localhost:3000/usuarios/11
+        name: Atualizar usuário
+        meta:
+          id: req_170b5b3a71a244bebef17b091189a997
+          created: 0
+          modified: 1748575351075
+          isPrivate: false
+          description: ""
+          sortKey: -3.8646698337862633e+37
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Novo Nome", 
+            	"email": "novoemail@fittrack.com", 
+            	"telefone": "83999990004"
+            }
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_bc071b8810d74873ab65bab24c81fc65
+          - name: Content-Type
+            value: application/json
+            id: pair_9750a935f6f340e2bea44b0215259ec9
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/usuarios/1
+        name: Buscar usuário por ID
+        meta:
+          id: req_325da4510a3c401390844985651cc66a
+          created: 0
+          modified: 1748575147976
+          isPrivate: false
+          description: ""
+          sortKey: -1.4284597504492951e+38
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_823dd0730d864b7b99fd528cd3b4416e
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/usuarios/listarUsuarios
+        name: Listar todos usuários
+        meta:
+          id: req_758b12d63c594f60a4a45318196b6c59
+          created: 0
+          modified: 1748575124311
+          isPrivate: false
+          description: ""
+          sortKey: -1.925000098137134e+38
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_20731ac3605a45198ef4be0c9a5b8ade
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/usuarios/11
+        name: Deletar usuário
+        meta:
+          id: req_7949068afb3f440ca1fbc589d8767c63
+          created: 0
+          modified: 1748575285459
+          isPrivate: false
+          description: ""
+          sortKey: -1.1225214494147467e+38
+        method: DELETE
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_181844e88b5b434d9ae9ede7ed017930
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Alunos
+    meta:
+      id: fld_6dfcafd80a104f1e83d6092eaa4144f5
+      created: 0
+      modified: 0
+      sortKey: -7.1442762334682815e+37
+      description: ""
+    children:
+      - url: http://localhost:3000/alunos/listarAlunos
+        name: Listar todos alunos
+        meta:
+          id: req_0d8adb387f28493b81b50e9aa6af9527
+          created: 0
+          modified: 1748575963472
+          isPrivate: false
+          description: ""
+          sortKey: -2.2579180029785825e+38
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_72385e18365f4b50acda324e30e30835
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/alunos/11
+        name: Atualizar aluno
+        meta:
+          id: req_2b3f17863583424e85f74bdd4f6a74a6
+          created: 0
+          modified: 1748576565000
+          isPrivate: false
+          description: ""
+          sortKey: -1.779061606561582e+38
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Aluno Atualizado", 
+            	"email": "alunoatualizado@fittrack.com", 
+            	"telefone": "83999990005"
+            }
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_5b5e4f8eedc04d94b7ac4bed7feaaa52
+          - name: Content-Type
+            value: application/json
+            id: pair_58f47bb6b7f0417facd6c9b259be89a0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/alunos/cpf/12345678900
+        name: Buscar aluno por CPF
+        meta:
+          id: req_6c1ebbdc63eb436696e03ee974373860
+          created: 0
+          modified: 1748576574424
+          isPrivate: false
+          description: ""
+          sortKey: -1.7706408195393148e+37
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_f908375c5cd1426786a81e87ffd513dc
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/alunos/1
+        name: Buscar aluno por ID
+        meta:
+          id: req_da643b67cd4f4bb5b9f524db8fa21af4
+          created: 0
+          modified: 1748576692126
+          isPrivate: false
+          description: ""
+          sortKey: -6.579681366956121e+35
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_ad7bdcf5725f4e73a7aaa4b869c64457
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/alunos/1
+        name: Deletar aluno
+        meta:
+          id: req_f22fa966534948cbb44a28d91d44269a
+          created: 0
+          modified: 1748576571250
+          isPrivate: false
+          description: ""
+          sortKey: -1.0134085283882957e+38
+        method: DELETE
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_d7e62e22951b4df19ac0b0b0641ca3e8
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Treinos
+    meta:
+      id: fld_833709b8d23f4854aeeecfa74ecb31d5
+      created: 0
+      modified: 1748803671509
+      sortKey: -1.9389867168389816e+38
+      description: ""
+    children:
+      - url: http://localhost:3000/treino/cadastrarTreino
+        name: Criar treino
+        meta:
+          id: req_80ab270c249b4d42bbcb4a2a7a471b47
+          created: 0
+          modified: 1748803717430
+          isPrivate: false
+          description: ""
+          sortKey: -2.5177799452206404e+38
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"aluno_id": 1, 
+            	"instrutor_id": 1, 
+            	"data": "2025-05-29",
+            	"observacao": "Treino de costas", 
+            	"exercicios": [{
+            		"exercicio_id": 1, 
+            		"series": 3, 
+            		"repeticoes": 12, 
+            		"carga": "25kg"
+            	}]
+            }
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_dfbf58cc84d54ab19cd20ef8b8e02bbb
+          - name: Content-Type
+            value: application/json
+            id: pair_353a3ccc5ee44456a374f6afcd3e297d
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/treino/visualizarTreinosAluno/7
+        name: Buscar treino por aluno ID
+        meta:
+          id: req_e313974243bd4ddcaf9af19dcf8ef186
+          created: 0
+          modified: 1749169593086
+          isPrivate: false
+          description: ""
+          sortKey: -2.483894094138135e+38
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_3a0ee44c7ed3426e8a5bd59918358895
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/treino/editarTreino/1
+        name: Editar treino
+        meta:
+          id: req_48299754c1b24a8585f3e129aa73d8fb
+          created: 1748803559428
+          modified: 1748803592731
+          isPrivate: false
+          description: ""
+          sortKey: -2.4176164089366846e+38
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"instrutor_id": 1, 
+            	"data": "2025-05-29",
+            	"observacao": "Treino de costas",
+            }
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_dfbf58cc84d54ab19cd20ef8b8e02bbb
+          - name: Content-Type
+            value: application/json
+            id: pair_353a3ccc5ee44456a374f6afcd3e297d
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/treino/excluirTreino/11
+        name: Deletar treino
+        meta:
+          id: req_cf28b46510c24c5682afadbc922727d4
+          created: 1748803606315
+          modified: 1748804236728
+          isPrivate: false
+          description: ""
+          sortKey: -2.401420491877212e+38
+        method: DELETE
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_dfbf58cc84d54ab19cd20ef8b8e02bbb
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/treino/listarTreinos
+        name: Listar Treinos
+        meta:
+          id: req_2cacd58fab9b4ef787ffd7787741d14e
+          created: 1748803688535
+          modified: 1748803726740
+          isPrivate: false
+          description: ""
+          sortKey: -2.5177799452206404e+38
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_3a0ee44c7ed3426e8a5bd59918358895
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/treino/treino-exercicio/16
+        name: Editar treino-exercicio
+        meta:
+          id: req_e042dbadef6641a5b01b3e4707a929b9
+          created: 1749170690065
+          modified: 1749170965136
+          isPrivate: false
+          description: ""
+          sortKey: -2.4095184504069483e+38
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "series_realizadas": 3,
+              "repeticoes_realizadas": 12,
+              "carga_realizada": "40kg",
+              "concluido": 1,
+              "comentario": "Fiz menos porque estava cansado"
+            }
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_dfbf58cc84d54ab19cd20ef8b8e02bbb
+          - name: Content-Type
+            value: application/json
+            id: pair_353a3ccc5ee44456a374f6afcd3e297d
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/treino/estatisticasAdesao
+        name: Buscar estatisticas
+        meta:
+          id: req_3888ac6bec544e4a89f8334a4710681d
+          created: 1749172965201
+          modified: 1749172968317
+          isPrivate: false
+          description: ""
+          sortKey: -2.5008370196793877e+38
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_3a0ee44c7ed3426e8a5bd59918358895
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Auth
+    meta:
+      id: fld_ac8cc9baba7a41a3b07f34ae17dc855c
+      created: 0
+      modified: 0
+      sortKey: -3.3721970332371433e+38
+      description: ""
+    children:
+      - url: http://localhost:3000/auth/login
+        name: Login
+        meta:
+          id: req_404488c7163442aca298abc384b318f7
+          created: 0
+          modified: 1748574634654
+          isPrivate: false
+          description: ""
+          sortKey: -9.463505627668992e+36
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "email": "john@fittrack.com",
+              "senha": "senhaSegura123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/auth/register
+        name: Register aluno
+        meta:
+          id: req_6147ca5f29e646ec90f8566eaa283ec1
+          created: 0
+          modified: 1748574831420
+          isPrivate: false
+          description: ""
+          sortKey: -1.730593447866688e+38
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Aluno Teste", 
+            	"email": "aluno@fittrack.com", 
+            	"senha": "senha123", 
+            	"telefone": "83999990001", 
+            	"tipo": "aluno"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_622739716a97478d90df7f3faf38bddf
+          - id: pair_f7d76f561b1146119e2cdc5c78a556c7
+            name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/auth/register
+        name: Register admin
+        meta:
+          id: req_b1e88c8481dc425e8a92266a3af10580
+          created: 0
+          modified: 1748574815521
+          isPrivate: false
+          description: ""
+          sortKey: -2.3774145049864597e+38
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Admin Teste", 
+            	"email": "admin2@fittrack.com", 
+            	"senha": "senha123", 
+            	"telefone": "83999990003", 
+            	"tipo": "admin"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_ba483eb6ecbd4a3e81737eb66fd748c8
+          - id: pair_ca823abcd12a4ad0866e480c42037a52
+            name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/auth/register
+        name: Register instrutor
+        meta:
+          id: req_ec4dc198ae5b4389b66d17d143928125
+          created: 0
+          modified: 1748574848230
+          isPrivate: false
+          description: ""
+          sortKey: -9.770114437554258e+36
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Instrutor Teste", 
+            	"email": "instrutor@fittrack.com", 
+            	"senha": "senha123", 
+            	"telefone": "83999990002", 
+            	"tipo": "instrutor", 
+            	"cref": "CREF0001"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_d4614097e4934d558fbbc918e6343e21
+          - id: pair_0135154bb79f4f16aeb76ac3f0af22ac
+            name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Instrutores
+    meta:
+      id: fld_db2a052fc44a45b89df472c551f30969
+      created: 0
+      modified: 0
+      sortKey: -9.361718205183995e+37
+      description: ""
+    children:
+      - url: http://localhost:3000/instrutores/2
+        name: Buscar instrutor por ID
+        meta:
+          id: req_1af4925a42a947bda32d7e384215d77b
+          created: 0
+          modified: 1748575893554
+          isPrivate: false
+          description: ""
+          sortKey: -2.998497854353096e+38
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_ed17237eaf344462ab91ea2d916aea5e
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/instrutores/12
+        name: Deletar instrutor
+        meta:
+          id: req_3a79d35c902a4a2c891a27a679afe1fa
+          created: 0
+          modified: 1748575925060
+          isPrivate: false
+          description: ""
+          sortKey: -2.3852245748177396e+38
+        method: DELETE
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_9b336d2e16f7429887cb8dac946e28df
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/instrutores/listarInstrutores
+        name: Listar todos instrutores
+        meta:
+          id: req_616a5835934c43398960c1db8bb825bd
+          created: 0
+          modified: 1748575322596
+          isPrivate: false
+          description: ""
+          sortKey: -1.6185512200493033e+38
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_c69f5ef5b89241ad9fbf4558d8391358
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/instrutores/2
+        name: Atualizar instrutor
+        meta:
+          id: req_9ed497b7f4334266919eb9d21b9b8d4d
+          created: 0
+          modified: 1748576392701
+          isPrivate: false
+          description: ""
+          sortKey: -1.522187378164542e+38
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"cref": "CREF9999",
+            	"usuarioId": 1
+            }
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_a7a48b77973c4a76a370d05f9c9c5a06
+          - name: Content-Type
+            value: application/json
+            id: pair_aab28448d7024a4c833f079730802e48
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/instrutores/cpf/12345678901
+        name: Buscar instrutor por CPF
+        meta:
+          id: req_c621c57c4bd545daa501a538d8828dfc
+          created: 0
+          modified: 1748575382447
+          isPrivate: false
+          description: ""
+          sortKey: -3.2119592072025387e+38
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_7d01e68e1c2441bc9750caa02f04e4ac
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Medidas
+    meta:
+      id: fld_e8967c5042314eb4b97c6ca5c496124e
+      created: 1749770719563
+      modified: 1749770719563
+      sortKey: -1749770719563
+      description: ""
+    children:
+      - url: http://localhost:3000/medidas/cadastrar
+        name: Criar medida corporal
+        meta:
+          id: req_16f69c7cfc284966becfd4cd2f329ae9
+          created: 1749770768835
+          modified: 1749770785877
+          isPrivate: false
+          description: ""
+          sortKey: -1749770771366
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "aluno_id": 7,
+              "data": "2025-06-12T10:30:00",
+              "peso": 75.2,
+              "altura": 1.78,
+              "cintura": 80,
+              "quadril": 95,
+              "peito": 100,
+              "braco": 35
+            }
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_e31374d677654c02b876fd1b68d2837d
+          - name: Content-Type
+            value: application/json
+            id: pair_d7cc4c2f718c4e10bc5ebd0290f4ee24
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/medidas/listar/7
+        name: Listar medidas corporais por aluno id
+        meta:
+          id: req_a180df4a38cb4fe6b5d4c12480417494
+          created: 1749770853817
+          modified: 1749770860944
+          isPrivate: false
+          description: ""
+          sortKey: -1749770771266
+        method: GET
+        headers:
+          - name: Authorization
+            value: Bearer {% response 'body', 'req_404488c7163442aca298abc384b318f7',
+              'b64::JC50b2tlbg==::46b', 'never', 60 %}
+            id: pair_7ba8fd449a524965b046383245a0060f
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_f1756d8890d05b60050c65d27b4df3523aba159e
+    created: 1748574267681
+    modified: 1748574267681
+environments:
+  name: Base Environment
+  meta:
+    id: env_f1756d8890d05b60050c65d27b4df3523aba159e
+    created: 1748574267680
+    modified: 1748574267680
+    isPrivate: false

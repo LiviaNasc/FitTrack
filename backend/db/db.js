@@ -67,4 +67,21 @@ db.prepare(`
     FOREIGN KEY (exercicio_id) REFERENCES exercicios(id)
   )
 `).run();
+
+db.prepare(`
+  CREATE TABLE IF NOT EXISTS medidas_corporais (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    aluno_id INTEGER NOT NULL,
+    data TEXT NOT NULL,
+    peso REAL,
+    altura REAL,
+    cintura REAL,
+    quadril REAL,
+    peito REAL,
+    braco REAL,
+    FOREIGN KEY (aluno_id) REFERENCES usuarios(id)
+  )
+`).run();
+
+
 module.exports = db;
