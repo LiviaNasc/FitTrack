@@ -43,6 +43,7 @@ export const treinoService = {
     apiRequest(`/treino/${treinoId}/concluir`, 'PATCH'),
   registrarProgressoExercicio: (exercicioId, dados) =>
     apiRequest(`/treino/treino-exercicio/${exercicioId}`, 'PUT', dados),
+  estatisticasAdesao: () => apiRequest('/treino/estatisticasAdesao')
 };
 
 // exercícios
@@ -63,6 +64,8 @@ export const usuarioService = {
 export const alunoService = {
   buscarTodos: () => apiRequest('/alunos/listarAlunos'),
   buscarPorId: (id) => apiRequest(`/alunos/${id}`),
+  deletarUsuario: (id) => apiRequest(`/alunos/${id}`, 'DELETE'),
+  atualizarUsuario: (id, dados) => apiRequest(`/alunos/${id}`, 'PUT', dados),
 };
 
 export const medidasService = {
@@ -75,6 +78,8 @@ export const medidasService = {
 export const instrutorService = {
   buscarTodos: () => apiRequest('/instrutores/listarInstrutores'),
   buscarPorId: (id) => apiRequest(`/instrutores/${id}`),
+  deletarUsuario: (id) => apiRequest(`/instrutores/${id}`, 'DELETE'),
+  atualizarUsuario: (id, dados) => apiRequest(`/instrutores/${id}`, 'PUT', dados),
 };
 
 export default apiRequest;

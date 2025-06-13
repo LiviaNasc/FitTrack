@@ -3,6 +3,9 @@ import { Navigate } from 'react-router-dom';
 import SignIn from '../pages/Signin';
 import SignUp from '../pages/Signup';
 import AdminHome from '../pages/admin/Home';
+import GerirAluno from '../pages/admin/GerirAluno';
+import GerirInstrutor from '../pages/admin/GerirInstrutor';
+import VisualizarRelatorios from '../pages/admin/Relatorios';
 import AlunoHome from '../pages/aluno/Home';
 import InstrutorHome from '../pages/instrutor/Home';
 import ProtectedRoute from './ProtectedRoute';
@@ -30,7 +33,31 @@ export default function RoutesApp() {
             <AdminHome />
           </ProtectedRoute>
         } />
-        
+
+        <Route path="/admin/gerirAluno" element={
+          <ProtectedRoute allowedRoles={['admin']}>
+            <GerirAluno />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/gerirInstrutor" element={
+          <ProtectedRoute allowedRoles={['admin']}>
+            <GerirInstrutor />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/admin/visualizarRelatorios" element={
+          <ProtectedRoute allowedRoles={['admin']}>
+            <VisualizarRelatorios />
+          </ProtectedRoute>
+        } />
+
+          <Route path="/admin/signup" element={
+          <ProtectedRoute allowedRoles={['admin']}>
+            <SignUp />
+          </ProtectedRoute>
+        } />
+
+
         <Route path="/instrutor/home" element={
           <ProtectedRoute allowedRoles={['instrutor']}>
             <InstrutorHome />

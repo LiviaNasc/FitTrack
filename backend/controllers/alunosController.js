@@ -58,7 +58,7 @@ async function atualizarAluno(req, res) {
 async function deletarAluno(req, res) {
     const { id } = req.params;
     try {
-        await alunosModel.deletarAluno(id);
+        alunosModel.deletarAluno(id);
         res.status(204).send();
     } catch (error) {
         console.error(error);

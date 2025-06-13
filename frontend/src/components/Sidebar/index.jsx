@@ -17,9 +17,10 @@ const Sidebar = ({ userType }) => {
   ];
 
     const adminItems = [
-    { label: 'Gerir Alunos', path: '/admin/home' },
-    { label: 'Gerir Instrutores', path: '/admin/home' },
-    { label: 'Visualizar Relatórios', path: '/admin/home' }
+    { label: 'Gerir Alunos', path: '/admin/gerirAluno' },
+    { label: 'Gerir Instrutores', path: '/admin/gerirInstrutor' },
+    { label: 'Visualizar Relatórios', path: '/admin/visualizarRelatorios' },
+    { label: 'Cadastrar Novo Usuário', path: '/admin/signup' }
   ];
 
   let items = [];
