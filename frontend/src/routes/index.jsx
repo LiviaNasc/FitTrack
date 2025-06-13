@@ -10,6 +10,7 @@ import InstrutorCadastrarTreino from '../pages/instrutor/CadastrarTreino';
 import InstrutorCadastrarExercicio from '../pages/instrutor/CadastrarExercicio';
 import InstrutorAcompanharAluno from '../pages/instrutor/Acompanhar';
 import AlunoTreinos from '../pages/aluno/Treinos';
+import AlunoMedidas from '../pages/aluno/Progresso';
 
 export default function RoutesApp() {
   return (
@@ -64,6 +65,12 @@ export default function RoutesApp() {
         <Route path="/aluno/treinos" element={
           <ProtectedRoute allowedRoles={['aluno']}>
             <AlunoTreinos />
+          </ProtectedRoute>
+        } />
+
+         <Route path="/aluno/progresso" element={
+          <ProtectedRoute allowedRoles={['aluno']}>
+            <AlunoMedidas />
           </ProtectedRoute>
         } />
 

@@ -18,4 +18,13 @@ function listarMedidasPorAluno(req, res) {
     }
 }
 
-module.exports = { cadastrarMedida, listarMedidasPorAluno };
+async function excluirMedida(req, res) {
+    try {
+        await medidasModel.excluirMedida(req.params.id);
+        res.status(204).send();
+    } catch (err) {
+        res.status(500).json({ erro: 'Erro ao excluir medida' });
+    }
+}
+
+module.exports = { cadastrarMedida, listarMedidasPorAluno, excluirMedida};

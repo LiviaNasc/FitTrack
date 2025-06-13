@@ -12,6 +12,10 @@ function listarMedidasPorAluno(aluno_id) {
     return db.prepare('SELECT * FROM medidas_corporais WHERE aluno_id = ? ORDER BY data DESC').all(aluno_id);
 }
 
+function excluirMedida(id) {
+    const stmt = db.prepare('DELETE FROM medidas_corporais WHERE id = ?');
+    stmt.run(id);
+}
 
 
-module.exports = { cadastrarMedida, listarMedidasPorAluno };
+module.exports = { cadastrarMedida, listarMedidasPorAluno, excluirMedida };

@@ -65,6 +65,12 @@ export const alunoService = {
   buscarPorId: (id) => apiRequest(`/alunos/${id}`),
 };
 
+export const medidasService = {
+  cadastrarMedida: (dados) => apiRequest('/medidas/cadastrar', 'POST', dados),
+  listarMedidasPorAluno: (alunoId) => apiRequest(`/medidas/listar/${alunoId}`),
+  excluirMedida: (id) => apiRequest(`/medidas/excluir/${id}`, 'DELETE') 
+};
+
 // instrutores
 export const instrutorService = {
   buscarTodos: () => apiRequest('/instrutores/listarInstrutores'),

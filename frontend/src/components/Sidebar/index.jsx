@@ -7,6 +7,7 @@ const Sidebar = ({ userType }) => {
 
   const alunoItems = [
     { label: 'Visualizar Treinos', path: '/aluno/treinos' },
+    { label: 'Medidas Corporais', path: '/aluno/progresso' },
   ];
 
   const instrutorItems = [
