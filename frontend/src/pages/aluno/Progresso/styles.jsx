@@ -161,25 +161,3 @@ export const EmptyMessage = styled.div`
   padding: 2rem;
   font-style: italic;
 `;
-
-export const DeleteButton = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #d33;
-  transition: all 0.2s;
-  padding: 5px;
-  border-radius: 4px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    background: rgba(221, 51, 51, 0.1);
-    transform: scale(1.1);
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
-`;

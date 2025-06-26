@@ -257,21 +257,6 @@ export const NoTreinos = styled.div`
   }
 `;
 
-export const ExercicioHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const ExercicioConcluidoBadge = styled.span`
-  background: #4CAF50;
-  color: white;
-  padding: 0.3rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: bold;
-`;
-
 export const ProgressoSection = styled.div`
   margin-top: 1.5rem;
   padding-top: 1.5rem;

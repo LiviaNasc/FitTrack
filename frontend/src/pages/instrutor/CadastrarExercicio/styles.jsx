@@ -33,23 +33,6 @@ export const Form = styled.form`
   border-top: 5px solid #FF6600; /* Destaque laranja */
 `;
 
-export const Container = styled.main`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 40px;
-  background-color: #1a1a1a; /* Fundo escuro */
-`;
-
-export const Title = styled.h2`
-  color: #FF6600; /* Laranja vibrante */
-  text-align: center;
-  margin-bottom: 25px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-`;
 
 export const Input = styled.input`
   width: 100%;
@@ -106,31 +89,6 @@ export const FormGroup = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-`;
-
-export const FitnessIcon = styled.div`
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 40px;
-  color: #FF6600;
-`;
-
-export const LinkText = styled.p`
-  text-align: center;
-  margin-top: 20px;
-  color: #666;
-  font-size: 14px;
-`;
-
-export const StrongText = styled.span`
-  color: #FF6600;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: underline;
-  
-  &:hover {
-    color: #E55C00;
-  }
 `;
 
 export const Textarea = styled.textarea`

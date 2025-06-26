@@ -82,23 +82,6 @@ export const Button = styled.button`
   }
 `;
 
-export const LinkText = styled.p`
-  font-size: 14px;
-  color: #757575;
-  text-align: center;
-  margin-top: 20px;
-`;
-
-export const StrongText = styled.span`
-  color:rgb(229, 127, 49);
-  cursor: pointer;
-  font-weight: bold;
-  
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
 export const ErrorMessage = styled.span`
   color: #ff3860;
   font-size: 13px;

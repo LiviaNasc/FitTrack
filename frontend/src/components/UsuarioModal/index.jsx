@@ -41,43 +41,6 @@ function UsuarioModal({ tipo, usuario, onClose, onRefresh }) {
     }
   };
 
-  const handleToggleBloqueio = async () => {
-    try {
-      const service = usuario.tipo === 'instrutor' ? instrutorService : alunoService;
-      const novoEstado = !formData.bloqueado;
-      
-      const result = await Swal.fire({
-        title: 'Confirmação',
-        text: `Deseja realmente ${novoEstado ? 'bloquear' : 'desbloquear'} este usuário?`,
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Sim',
-        cancelButtonText: 'Cancelar'
-      });
-
-      if (result.isConfirmed) {
-        await service.atualizarUsuario(usuario.id, { bloqueado: novoEstado });
-        
-        await Swal.fire({
-          icon: 'success',
-          title: 'Sucesso!',
-          text: `Usuário ${novoEstado ? 'bloqueado' : 'desbloqueado'} com sucesso`,
-          timer: 1500,
-          showConfirmButton: false
-        });
-        
-        onRefresh();
-        onClose();
-      }
-    } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Erro',
-        text: error.message,
-        confirmButtonText: 'OK'
-      });
-    }
-  };
 
   const handleExcluir = async () => {
     const result = await Swal.fire({
@@ -135,9 +98,7 @@ function UsuarioModal({ tipo, usuario, onClose, onRefresh }) {
           <button onClick={handleSalvar}>Salvar</button>
           {isEdicao && (
             <>
-              <button onClick={handleToggleBloqueio}>
-                {formData.bloqueado ? 'Desbloquear' : 'Bloquear'}
-              </button>
+
               <button onClick={handleExcluir}>Excluir</button>
             </>
           )}

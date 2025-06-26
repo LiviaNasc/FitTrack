@@ -88,7 +88,7 @@ function InstrutorCadastrarExercicio() {
         throw new Error('Erro ao cadastrar exercício');
       }
 
-      const data = await response.json();
+      await response.json();
       setSuccess('Exercício cadastrado com sucesso!');
       fetchExercicios();
       setIsModalOpen(false);
