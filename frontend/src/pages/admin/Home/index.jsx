@@ -1,26 +1,7 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as C from './styles';
-import Layout from '../../../components/Layout';
+import SharedHome from '../../../components/SharedHome';
 
 function AdminHome() {
-  const navigate = useNavigate();
-
-  return (
-  <Layout userType={"admin"}>
-    <C.HomeContainer>
-      <C.Header>
-        <h1>Painel Administrativo</h1>
-      </C.Header>
-      <section>
-        <p>Bem-vindo ao painel de administração do FitTrack</p>
-        <C.AdminButton onClick={() => navigate('/signup')}>
-          Cadastrar Usuário
-        </C.AdminButton>
-      </section>
-    </C.HomeContainer>
-    </Layout>
-  );
+  return <SharedHome userType="admin" />;
 }
 
 export default AdminHome;

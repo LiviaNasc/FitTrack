@@ -87,6 +87,7 @@ export const AlunoInfo = styled.div`
 export const AlunoNome = styled.div`
   font-weight: bold;
   margin-bottom: 0.2rem;
+  color: #fefefe
 `;
 
 export const AlunoEmail = styled.div`
@@ -218,4 +219,5 @@ export const ComentarioTexto = styled.p`
   background: #333;
   border-radius: 6px;
   line-height: 1.6;
+  color: #fefefe;
 `;
