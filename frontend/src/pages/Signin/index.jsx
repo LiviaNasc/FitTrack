@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import * as C from './styles';
@@ -6,6 +7,7 @@ import * as C from './styles';
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -16,7 +18,6 @@ function SignIn() {
     setError('');
     setIsLoading(true);
 
-    
     try {
       const user = await login(email, password);
       switch(user.tipo) {
@@ -40,38 +41,61 @@ function SignIn() {
   };
 
   return (
-    <C.Container>
-      <C.Form onSubmit={handleSubmit}>
-        <C.Title>Login</C.Title>
-        
-        {error && <C.ErrorMessage>{error}</C.ErrorMessage>}
+    <C.LoginContainer>
+      <C.LeftPanel>
+        <C.BackgroundAnimation />
+        <C.InspirationContent>
+          <C.InspirationTitle>Sua Transformação Fitness</C.InspirationTitle>
+          <C.InspirationSubtitle>
+            Alcance seus objetivos com acompanhamento personalizado
+          </C.InspirationSubtitle>
+        </C.InspirationContent>
+      </C.LeftPanel>
+      
+      <C.RightPanel>
+        <C.GlassCard>
+          <C.LoginForm onSubmit={handleSubmit}>
+            <C.Logo>FitTrack</C.Logo>
+            <C.WelcomeMessage>Bem-vindo de volta</C.WelcomeMessage>
+            
+            {error && <C.ErrorMessage>{error}</C.ErrorMessage>}
 
-        <C.FormGroup>
-          <C.Input
-            type="email"
-            placeholder="Email *"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </C.FormGroup>
+            <C.InputGroup>
+              <C.Input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder=" "
+                required
+              />
+              <C.InputLabel>Email</C.InputLabel>
+            </C.InputGroup>
 
-        <C.FormGroup>
-          <C.Input
-            type="password"
-            placeholder="Senha *"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </C.FormGroup>
+            <C.InputGroup>
+              <C.Input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                 placeholder=" " 
+                required
+              />
+              <C.InputLabel>Senha</C.InputLabel>
+              <C.TogglePasswordButton 
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+              >
+                {showPassword ? <FiEye size={20} /> : <FiEyeOff size={20} />  }
+              </C.TogglePasswordButton>
+            </C.InputGroup>
 
-        <C.Button type="submit" disabled={isLoading}>
-          {isLoading ? 'Carregando...' : 'Entrar'}
-        </C.Button>
-        
-      </C.Form>
-    </C.Container>
+            <C.SubmitButton type="submit" disabled={isLoading}>
+              {isLoading ? <C.Spinner /> : 'Acessar Sistema'}
+            </C.SubmitButton>
+          </C.LoginForm>
+        </C.GlassCard>
+      </C.RightPanel>
+    </C.LoginContainer>
   );
 }
 
